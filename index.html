@@ -102,6 +102,70 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    //log
+    errorBtns[0].addEventListener('click', e => {
+      console.log('logging to console');
+    });
+    //Error
+    errorBtns[1].addEventListener('click', e => {
+      console.error('oopsie!');
+    });
+    //count
+    errorBtns[2].addEventListener('click', e => {
+      console.count('count: ');
+    });
+    //warn
+    errorBtns[3].addEventListener('click', e => {
+      console.warn('be careful!');
+    });
+    //assert
+    errorBtns[4].addEventListener('click', e => {
+      console.assert(5 === 7, '5 is not = 7');
+    });
+    //clear
+    errorBtns[5].addEventListener('click', e => {
+      console.clear();
+    });
+    //dir
+    errorBtns[6].addEventListener('click', e => {
+      console.dir(document);
+    });
+    //dirxml
+    errorBtns[7].addEventListener('click', e => {
+      console.dirxml(document);
+    });
+    //group start 
+    errorBtns[8].addEventListener('click', e => {
+      console.group();
+    });
+    //group end
+    errorBtns[9].addEventListener('click', e => {
+      console.groupEnd();
+    });
+    //table
+    errorBtns[10].addEventListener('click', e => {
+      console.table(["Thing One", "Thing Two", "Fish Red", "Fish Blue"]);
+    });
+    //start timer
+    errorBtns[11].addEventListener('click', e => {
+      console.time("myTime");
+    });
+    //end timer
+    errorBtns[12].addEventListener('click', e => {
+      console.timeEnd("myTime");
+    });
+    //trace
+    errorBtns[13].addEventListener('click', e => {
+      console.trace();
+    });
+    //global
+    errorBtns[14].addEventListener('click', e => {
+      console.log('logging to console');
+    });
+    
+    
+
+    
   </script>
 </body>
 
