@@ -87,7 +87,25 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "baad077c41594911897a0a30effab83a"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                          
+
+
+  <script>
+
+    class DivByZero extends Error {
+      constructor(msg) {
+        super(msg);
+        this.name = "Div By Zero"
+      }
+    }
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -95,7 +113,16 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      try {
+        if (secondNum == 0 && operator == '/') {
+          throw new DivByZero("Div by zero? Can't do it!");
+        }
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (err){
+        output.innerHTML = err.message;
+      } finally {
+        console.log("eval complete");
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -160,8 +187,14 @@
     });
     //global
     errorBtns[14].addEventListener('click', e => {
-      console.log('logging to console');
+      throw new Error("Global Error!");
     });
+
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      console.log(msg, url, lineNo, columnNo, error);      
+
+      return false;
+    }
     
     
 
